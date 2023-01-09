@@ -1,0 +1,40 @@
+header{
+    height: 100px;
+    background-color: #0a79c1;
+}
+
+header nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+header a{
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.left-part-header{
+    width: 25%;
+}
+
+.right-part-header{
+    width: 75%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.left-part-header h2{
+    margin-left: 25px;
+}
+
+.right-part-header a{
+    display: flex;
+    flex-direction: column;
+}
+
+.right-part-header a i{
+    margin: 5px;
+    text-align: center;
+}
