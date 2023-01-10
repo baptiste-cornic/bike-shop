@@ -21,8 +21,20 @@
 {#
             <a href="#">Déconnexion</a>
             <a href="#">Connexion</a>
-            <a href="#">Enregistrement</a>
+
 #}
+            <div>
+                <a href="{{ path('app_login') }}">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Connexion</span>
+                </a>
+            </div>
+            <div>
+                <a href="{{ path('register') }}">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Enregistrement</span>
+                </a>
+            </div>
         </div>
     </nav>
 </header>
