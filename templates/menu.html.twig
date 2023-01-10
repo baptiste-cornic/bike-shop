@@ -1,13 +1,13 @@
 <header>
     <nav>
         <div class="left-part-header">
-            <a href="{{ path('home') }}">
+            <a href="{{ path('product') }}">
                 <h2>Bike Shop</h2>
             </a>
         </div>
         <div class="right-part-header">
             <div>
-                <a href="{{ path('home') }}">
+                <a href="{{ path('product') }}">
                     <i class="fa-solid fa-bicycle"></i>
                     <span>Vélos</span>
                 </a>
@@ -24,9 +24,15 @@
 
 #}
             <div>
-                <a href="{{ path('app_login') }}">
+                <a href="{{ path('login') }}">
                     <i class="fa-solid fa-circle-user"></i>
                     <span>Connexion</span>
+                </a>
+            </div>
+            <div>
+                <a href="{{ path('logout') }}">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Déconnexion</span>
                 </a>
             </div>
             <div>
