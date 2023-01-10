@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ product.name }}</h1>
+    <div class="bike-card">
+        <div class="bike-main">
+            <div class="bike-main-img">
+                <img src="https://fakeimg.pl/750x400/">
+            </div>
+            <div class="bike-main-description">
+                <p>{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                <p>{{ product.brand }} / {{ product.productType }}</p>
+                <p>{{ product.description }}</p>
+                <div>
+                    <button>Ajouter au panier</button>
+                </div>
+            </div>
+        </div>
+        <div class="bike-info">
+            <h3>Descriptif</h3>
+            <table>
+                <tr>
+                    <td>Type</td>
+                    <td>{{ product.productType }}</td>
+                </tr>
+                <tr>
+                    <td>Marque</td>
+                    <td>{{ product.brand }}</td>
+                </tr>
+                {% if product.frame %}
+                    <tr>
+                        <td>Cadre</td>
+                        <td>{{ product.frame }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.fork %}
+                    <tr>
+                        <td>Fourche</td>
+                        <td>{{ product.fork }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.suspension %}
+                    <tr>
+                        <td>Suspension</td>
+                        <td>{{ product.suspension }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.brakeType %}
+                    <tr>
+                        <td>Type de frein</td>
+                        <td>{{ product.brakeType }}</td>
+                    </tr>
+                {% endif %}
+                {% if product.saddle %}
+                    <tr>
+                        <td>Selle</td>
+                        <td>{{ product.saddle }}</td>
+                    </tr>
+                {% endif %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

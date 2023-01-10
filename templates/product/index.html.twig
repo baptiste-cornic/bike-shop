@@ -4,17 +4,19 @@
 
 {% block body %}
     <h1>Nos vélos</h1>
-    <div class="velo-list">
+    <div class="bike-list">
         {% for index, product in products %}
             <div class="cart">
-                <div>
-                    <img src="https://fakeimg.pl/300/">
-                </div>
-                <div>
-                    <h4>{{ product.name }}</h4>
-                    <p>{{ product.brand }} / {{ product.productType }}</p>
-                    <p>{{ product.price|format_currency('EUR', locale='fr') }}</p>
-                </div>
+                <a href="{{ path('product', {'id' : product.id}) }}">
+                    <div>
+                        <img src="https://fakeimg.pl/300/">
+                    </div>
+                    <div>
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.brand }} / {{ product.productType }}</p>
+                        <p>{{ product.price|format_currency('EUR', locale='fr') }}</p>
+                    </div>
+                </a>
             </div>
         {% endfor %}
     </div>
