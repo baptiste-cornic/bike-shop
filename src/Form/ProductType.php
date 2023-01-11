@@ -28,50 +28,53 @@ class ProductType extends AbstractType
 
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom',
+                'label' => false,
                 'required' => true,
             ])
             ->add('brand', TextType::class, [
-                'label' => 'Marque',
+                'label' => false,
                 'required' => true,
             ])
             ->add('picture', FileType::class, [
-                'label' => 'Photo',
+                'label' => false,
                 'required' => false,
             ])
             ->add('productType', ChoiceType::class, [
-                'label' => 'Type du produit',
+                'label' => false,
                 'required' => true,
                 'choices' => $productType,
             ])
             ->add('price', MoneyType::class, [
-                'label' => 'Prix',
+                'label' => false,
                 'required' => true,
                 'divisor' => 100,
                 'currency' => ''
                 ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description',
+                'label' => false,
                 'required' => false,
+                'attr' => [
+                    'rows' => 3
+                ]
             ])
             ->add('frame', TextType::class, [
-                'label' => 'Cadre',
+                'label' => false,
                 'required' => false,
             ])
             ->add('fork', TextType::class, [
-                'label' => 'Fourche',
+                'label' => false,
                 'required' => false,
             ])
             ->add('suspension', TextType::class, [
-                'label' => 'Suspension',
+                'label' => false,
                 'required' => false,
             ])
             ->add('brakeType', TextType::class, [
-                'label' => 'Type de frein',
+                'label' => false,
                 'required' => false,
             ])
             ->add('saddle', TextType::class, [
-                'label' => 'Selle',
+                'label' => false,
                 'required' => false,
             ])
         ;

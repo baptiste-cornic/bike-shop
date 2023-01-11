@@ -6,18 +6,54 @@
     <h1>Ajout d'un produit</h1>
     <div class="add-bike">
         {{ form_start(form) }}
-            {{ form_row(form.name) }}
-            {{ form_row(form.brand) }}
-            {{ form_row(form.picture) }}
-            {{ form_row(form.productType) }}
-            {{ form_row(form.price) }}
-            {{ form_row(form.description) }}
-            {{ form_row(form.frame) }}
-            {{ form_row(form.fork) }}
-            {{ form_row(form.suspension) }}
-            {{ form_row(form.brakeType) }}
-        {{ form_row(form.saddle) }}
-        <button type="submit" class="btn btn-success" >Valider</button>
+            <div class="row">
+                <div class="label-div">Nom</div>
+                <div class="input-div">{{ form_widget(form.name) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Marque</div>
+                <div class="input-div">{{ form_widget(form.brand) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Photo</div>
+                <div class="input-div">{{ form_widget(form.picture) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Type de produit</div>
+                <div class="input-div">{{ form_widget(form.productType) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Prix</div>
+                <div class="input-div">{{ form_widget(form.price) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Description</div>
+                <div class="input-div">{{ form_widget(form.description) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Cadre</div>
+                <div class="input-div">{{ form_widget(form.frame) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Fourche</div>
+                <div class="input-div">{{ form_widget(form.fork) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Suspension</div>
+                <div class="input-div">{{ form_widget(form.suspension) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Type de frein</div>
+                <div class="input-div">{{ form_widget(form.brakeType) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Selle</div>
+                <div class="input-div">{{ form_widget(form.saddle) }}</div>
+            </div>
+            <div class="row row-btn">
+                <button type="submit" class="btn btn-success" >Valider</button>
+            </div>
+
         {{ form_end(form) }}
     </div>
 {% endblock %}
