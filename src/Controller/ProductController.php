@@ -38,10 +38,22 @@ class ProductController extends AbstractController
     }
 
     #[Route('/add_product/', name: 'add_product')]
-    public function add_product(Request $request, EntityManagerInterface $em): Response
+    #[Route('/edit_product/{id}', name: 'edit_product')]
+    public function edit_product(Request $request, ProductRepository $productRepo, EntityManagerInterface $em, $id = null): Response
     {
+        if ($id){
+            $product = $productRepo->find($id);
+            $title = 'Modifier un produit';
+            if (!$product){
+                $this->addFlash('error', 'Produit inexistant, veuillez relancer votre recherche.');
+                return $this->redirectToRoute('product_list');
+            }
+        }
+        else{
+            $product = new Product();
+            $title = 'Ajouter un produit';
+        }
 
-        $product = new Product();
         $form = $this->createForm(ProductType::class, $product );
         $form->handleRequest($request);
 
@@ -49,24 +61,20 @@ class ProductController extends AbstractController
             $em->persist($product);
             $em->flush();
 
-            $this->addFlash('success', "Ajout d'un produit réussi." );
-
+            $this->addFlash('success', "Enregistrement réussi." );
 
             return $this->redirectToRoute('product_list');
         }
         return $this->render('product/edit_product.html.twig', [
             'form' => $form->createView(),
+            'title' => $title,
         ]);
     }
 
-    #[Route('/edit_product/{id}', name: 'edit_product')]
+/*
     public function edit_product(Request $request, ProductRepository $productRepo, EntityManagerInterface $em, $id = null): Response
     {
-        $product = $productRepo->find($id);
-        if (!$product){
-            $this->addFlash('error', 'Produit inexistant, veuillez relancer votre recherche.');
-            return $this->redirectToRoute('product_list');
-        }
+
 
         $form = $this->createForm(ProductType::class, $product );
         $form->handleRequest($request);
@@ -82,5 +90,5 @@ class ProductController extends AbstractController
         return $this->render('product/edit_product.html.twig', [
             'form' => $form->createView(),
         ]);
-    }
+    }*/
 }

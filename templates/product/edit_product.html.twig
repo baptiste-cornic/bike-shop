@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajout d'un produit{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-    <h1>Ajout d'un produit</h1>
+    <h1>{{ title }}</h1>
     <div class="add-bike">
         {{ form_start(form) }}
             <div class="row">
