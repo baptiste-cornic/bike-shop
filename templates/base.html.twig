@@ -18,6 +18,22 @@
     <body>
         {% include('menu.html.twig') %}
         <div class="container">
+            <div class="flash">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+
+                        {% if label == 'error' %}
+                            {% set icon = 'fa-xmark' %}
+                        {% elseif label == 'success' %}
+                            {% set icon = 'fa-check' %}
+                        {% endif %}
+
+                        <div class="alert alert-{{ label }}">
+                            <p><i class="fa-solid {{ icon }}"></i> {{ message|raw }}</p>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
 
             {% block body %}{% endblock %}
         </div>

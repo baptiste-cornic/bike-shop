@@ -15,6 +15,37 @@ a{
     margin: auto;
 }
 
+.flash{
+    margin-top: 15px;
+    text-align: right;
+}
+
+.alert{
+    height: 30px;
+    position: relative;
+    padding: 1em;
+    margin-bottom: 1em;
+    border: 0 solid transparent;
+    border-radius: 8px;
+    display: flex;
+}
+
+.alert i{
+    margin-right: 5px;
+}
+
+.alert-success{
+    color: #067260;
+    background-color: #cefef1;
+    border-color: #bbf5eb;
+}
+
+.alert-error{
+    color: #7c2f2f;
+    background-color: #fcdede;
+    border-color: #fbd1d1;
+}
+
 .bike-list{
     display: flex;
     flex-wrap: wrap;

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un produit{% endblock %}
+
+{% block body %}
+    <h1>Ajout d'un produit</h1>
+    <div class="add-bike">
+        {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.brand) }}
+            {{ form_row(form.picture) }}
+            {{ form_row(form.productType) }}
+            {{ form_row(form.price) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.frame) }}
+            {{ form_row(form.fork) }}
+            {{ form_row(form.suspension) }}
+            {{ form_row(form.brakeType) }}
+        {{ form_row(form.saddle) }}
+        <button type="submit" class="btn btn-success" >Valider</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
