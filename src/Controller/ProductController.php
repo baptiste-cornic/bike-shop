@@ -70,25 +70,4 @@ class ProductController extends AbstractController
             'title' => $title,
         ]);
     }
-
-/*
-    public function edit_product(Request $request, ProductRepository $productRepo, EntityManagerInterface $em, $id = null): Response
-    {
-
-
-        $form = $this->createForm(ProductType::class, $product );
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()){
-
-            $em->flush();
-
-            $this->addFlash('success', "Mise à jour du produit réussi." );
-
-            return $this->redirectToRoute('product_list');
-        }
-        return $this->render('product/edit_product.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }*/
 }
