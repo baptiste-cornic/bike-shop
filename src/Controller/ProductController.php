@@ -42,6 +42,8 @@ class ProductController extends AbstractController
     #[Route('/edit_product/{id}', name: 'edit_product')]
     public function edit_product(Request $request, ProductRepository $productRepo, EntityManagerInterface $em, $id = null): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         if ($id){
             $product = $productRepo->find($id);
             $title = 'Modifier un produit';
@@ -75,6 +77,8 @@ class ProductController extends AbstractController
     #[Route('/update_valid_product', name: 'update_valid_product')]
     public function updateValidProduct(Request $request, ProductRepository $productRepo, EntityManagerInterface $em): JsonResponse{
         try {
+            $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
             $productId = $request->getContent();
             if (!$productId)
                 throw new \Exception('Id incorrect.');
