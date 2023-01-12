@@ -135,6 +135,20 @@ button{
 }
 
 /* Admin */
+.add-product-btn{
+    background-color: #369;
+    border: none;
+    padding: 0.5em;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 5px;
+    float: right;
+}
+
+.add-product-btn a{
+    color: white;
+}
 
 .bike-list-admin table{
     border-collapse: collapse;
