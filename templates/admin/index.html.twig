@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin{% endblock %}
+
+{% block body %}
+    <h1>Admin</h1>
+    <div class="bike-list-admin">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Marque</th>
+                    <th>Type</th>
+                    <th>Price</th>
+                    <th>Valide</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.name }}</td>
+                        <td class="text-center">{{ product.brand }}</td>
+                        <td class="text-center">{{ product.productType }}</td>
+                        <td class="text-center">{{ product.price }} €</td>
+                        <td class="text-center">
+                            <input type="checkbox" data-id="{{ product.id }}"{% if product.isValid %} checked {% endif %}>
+                        </td>
+                        <td>
+                            <a href="{{ path('edit_product', {'id' : product.id}) }}" title="editer">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+
+      // TODO : ajax pour modifier la validité
+
+    </script>
+{% endblock %}

@@ -37,7 +37,7 @@ class ProductController extends AbstractController
         ]);
     }
 
-    #[Route('/add_product/', name: 'add_product')]
+    #[Route('/add_product', name: 'add_product')]
     #[Route('/edit_product/{id}', name: 'edit_product')]
     public function edit_product(Request $request, ProductRepository $productRepo, EntityManagerInterface $em, $id = null): Response
     {
