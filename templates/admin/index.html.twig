@@ -24,7 +24,7 @@
                         <td class="text-center">{{ product.productType }}</td>
                         <td class="text-center">{{ product.price }} €</td>
                         <td class="text-center">
-                            <input type="checkbox" data-id="{{ product.id }}"{% if product.isValid %} checked {% endif %}>
+                            <input class="update-valid-product" type="checkbox" data-id="{{ product.id }}"{% if product.isValid %} checked {% endif %}>
                         </td>
                         <td>
                             <a href="{{ path('edit_product', {'id' : product.id}) }}" title="editer">
@@ -41,7 +41,27 @@
 {% block javascripts %}
     <script type="text/javascript">
 
-      // TODO : ajax pour modifier la validité
+      document.addEventListener("DOMContentLoaded", (event) => {
+          document.querySelector('tbody').addEventListener('click', updateValidProduct);
+      })
 
+      function updateValidProduct(e){
+          if (e.target.className == 'update-valid-product'){
+
+              let productId =   e.target.getAttribute('data-id');
+              let httpRequest = new XMLHttpRequest();
+              let url = '/update_valid_product';
+              httpRequest.open('POST', url);
+              httpRequest.send(productId);
+              httpRequest.onload = function (){
+                  let parse_response = JSON.parse(httpRequest.response)
+                  if (parse_response.status == "success"){
+                      addFlash('success', 'Modification enregistrée')
+                  }else{
+                      addFlash('error', parse_response.message)
+                  }
+              }
+          }
+      }
     </script>
 {% endblock %}

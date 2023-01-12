@@ -7,6 +7,7 @@ use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,7 +17,7 @@ class ProductController extends AbstractController
     #[Route('/', name: 'product_list')]
     public function index(ProductRepository $productRepo): Response
     {
-        $products = $productRepo->findAll();
+        $products = $productRepo->findBy(['isValid'=> true]);
 
         return $this->render('product/index.html.twig', [
             'products' => $products,
@@ -69,5 +70,26 @@ class ProductController extends AbstractController
             'form' => $form->createView(),
             'title' => $title,
         ]);
+    }
+
+    #[Route('/update_valid_product', name: 'update_valid_product')]
+    public function updateValidProduct(Request $request, ProductRepository $productRepo, EntityManagerInterface $em): JsonResponse{
+        try {
+            $productId = $request->getContent();
+            if (!$productId)
+                throw new \Exception('Id incorrect.');
+            /** @var Product $product */
+            $product = $productRepo->find($productId);
+            if (!$productId)
+                throw new \Exception("Ce produit n'existe pas.");
+
+            $product->setIsValid(!$product->isIsValid());
+            $em->flush();
+
+            return new JsonResponse(['status' => 'success']);
+
+        }catch (\Exception $exception){
+            return new JsonResponse(['status' => 'error', 'message' => $exception->getMessage()]);
+        }
     }
 }
