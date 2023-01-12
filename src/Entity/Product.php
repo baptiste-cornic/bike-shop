@@ -7,6 +7,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Product
 {
     #[ORM\Id]
@@ -46,6 +47,15 @@ class Product
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $saddle = null;
+
+    #[ORM\Column]
+    private ?bool $isValid = false;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $creationDate = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $updateDate = null;
 
     public function getId(): ?int
     {
@@ -180,6 +190,44 @@ class Product
     public function setSaddle(?string $saddle): self
     {
         $this->saddle = $saddle;
+
+        return $this;
+    }
+
+    public function isIsValid(): ?bool
+    {
+        return $this->isValid;
+    }
+
+    public function setIsValid(bool $isValid): self
+    {
+        $this->isValid = $isValid;
+
+        return $this;
+    }
+
+    public function getCreationDate(): ?\DateTimeInterface
+    {
+        return $this->creationDate;
+    }
+
+    #[ORM\PrePersist]
+    public function setCreationDate(): self
+    {
+        $this->creationDate = new \DateTime();
+
+        return $this;
+    }
+
+    public function getUpdateDate(): ?\DateTimeInterface
+    {
+        return $this->updateDate;
+    }
+
+    #[ORM\PreUpdate]
+    public function setUpdateDate(): self
+    {
+        $this->updateDate = new \DateTime();
 
         return $this;
     }
