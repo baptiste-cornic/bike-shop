@@ -32,6 +32,14 @@ button{
     display: none;
 }
 
+.d-flex{
+    display: flex;
+}
+
+.blue-link{
+    color: blue;
+}
+
 .container{
     width: 1400px;
     margin: auto auto 30px;
@@ -165,5 +173,45 @@ button{
     padding: 0.75rem;
     border-top: 1px solid #dee2e6 ;
 }
+
+/* Panier */
+
+.cart-div table{
+    border-collapse: collapse;
+    width: 80%;
+    font-size: 1.1em;
+}
+
+.cart-div table thead th{
+    color: #fff;
+    background-color: #063b5d;
+    border-color: #32383e;
+}
+
+.cart-div table th, .cart-div table td{
+    padding: 0.75rem;
+    border-top: 1px solid #dee2e6 ;
+}
+
+.cart-img-div{
+    margin-right: 10px;
+}
+
+.cart-text-div{
+    display: flex;
+    align-items: center;
+
+}
+
+.cart-update-quantity{
+    padding: 1px 5px;
+    background: #063b5d;
+    color: white;
+}
+
+.cart-div tfoot{
+    font-weight: bold;
+}
+
 
 

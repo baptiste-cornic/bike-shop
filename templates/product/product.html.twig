@@ -14,7 +14,9 @@
                 <p>{{ product.brand }} / {{ product.productType }}</p>
                 <p>{{ product.description }}</p>
                 <div>
-                    <button>Ajouter au panier</button>
+                    <a href="{{ path('increase_cart', {'id' : product.id}) }}" title="Ajouter au panier">
+                        <button class="btn btn-success">Ajouter au panier</button>
+                    </a>
                 </div>
             </div>
         </div>
