@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+    <h1>Commande</h1>
+    <div class="order-div d-flex">
+        <div class="order-form-div">
+            <p>Veuillez compléter vos informations pour effectuer la commande</p>
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="label-div">Prénom</div>
+                <div class="input-div">{{ form_widget(form.firstname) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Nom de famille</div>
+                <div class="input-div">{{ form_widget(form.lastname) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Adresse</div>
+                <div class="input-div">{{ form_widget(form.address) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Code postal</div>
+                <div class="input-div">{{ form_widget(form.zipCode) }}</div>
+            </div>
+            <div class="row">
+                <div class="label-div">Ville</div>
+                <div class="input-div">{{ form_widget(form.city) }}</div>
+            </div>
+            <div class="row row-btn">
+                <button type="submit" class="btn btn-success" >Valider</button>
+            </div>
+            {{ form_end(form) }}
+        </div>
+        <div class="order-recap-div">
+            <div>
+                <h3 class="text-center">Votre commande</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Quantité</th>
+                            <th>Prix total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set total = 0 %}
+                        {% for product in cart %}
+                            {% set total = total + product.product.price * product.quantity  %}
+                            <tr>
+                                <td>{{ product.product.name }}</td>
+                                <td class="text-center">{{ product.quantity }}</td>
+                                <td class="text-center">{{ product.product.price * product.quantity  }} €</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot class="bold">
+                        <tr>
+                            <td class="text-center" colspan="2"> Prix total :</td>
+                            <td class="text-center">{{ total }} €</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

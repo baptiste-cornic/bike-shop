@@ -53,13 +53,16 @@
                     </tr>
                 {% endfor %}
             </tbody>
-            <tfoot>
+            <tfoot class="bold">
                 <tr>
                     <td colspan="3" class="text-center">Total de mes articles :</td>
                     <td colspan="2">{{ total }} €</td>
                 </tr>
             </tfoot>
         </table>
+            <button class="btn btn-success ">
+                <a href="{{ path('order') }}">Valider mon panier</a>
+            </button>
         {% else %}
             <h4 class="text-center">Votre panier est vide</h4>
             <h4 class="text-center">La liste de nos vélos <a class="blue-link" href="{{ path('product_list') }}">ici</a></h4>

@@ -40,6 +40,10 @@ button{
     color: blue;
 }
 
+.bold{
+    font-weight: bold;
+}
+
 .container{
     width: 1400px;
     margin: auto auto 30px;
@@ -138,6 +142,10 @@ button{
     border-color: #60aa7e;
 }
 
+.btn-success a{
+    color: white;
+}
+
 .add-bike input, .add-bike select, .add-bike textarea{
     width: 100%;
 }
@@ -182,13 +190,13 @@ button{
     font-size: 1.1em;
 }
 
-.cart-div table thead th{
+.cart-div table thead th, .order-recap-div table thead th{
     color: #fff;
     background-color: #063b5d;
     border-color: #32383e;
 }
 
-.cart-div table th, .cart-div table td{
+.cart-div table th, .cart-div table td, .order-recap-div table td{
     padding: 0.75rem;
     border-top: 1px solid #dee2e6 ;
 }
@@ -209,9 +217,40 @@ button{
     color: white;
 }
 
-.cart-div tfoot{
-    font-weight: bold;
+/* Order */
+
+.order-div {
+    width: 80%;
+    margin: auto;
 }
 
+.order-form-div{
+    width: 65%;
+    margin: auto;
+}
 
+.order-form-div form input{
+    width: 40%;
+}
+
+.order-recap-div{
+    width: 35%;
+}
+
+.order-recap-div table{
+    width: 100%;
+    border-collapse: collapse;
+}
+/* Confirmation */
+
+.recap-address-div{
+    width: 50%;
+}
+
+.recap-address-div div{
+    border: 1px solid grey;
+    width: 60%;
+    margin: auto;
+    padding: 10px;
+}
 

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation{% endblock %}
+
+{% block body %}
+    <h1>Confirmation</h1>
+    <div class="confirm-div">
+        <div class="row">
+            <div class="recap-address-div">
+                <div>
+                    <h3 class="text-center">Vos informations</h3>
+                    <p>{{ app.user.firstname }} {{ app.user.lastname }}</p>
+                    <p>{{ app.user.address }}</p>
+                    <p>{{ app.user.zipCode }}</p>
+                    <p>{{ app.user.city }}</p>
+                </div>
+            </div>
+            <div class="order-recap-div">
+                <div>
+                    <h3 class="text-center">Votre commande</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Quantité</th>
+                                <th>Prix total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set total = 0 %}
+                            {% for product in cart %}
+                                {% set total = total + product.product.price * product.quantity  %}
+                                <tr>
+                                    <td>{{ product.product.name }}</td>
+                                    <td class="text-center">{{ product.quantity }}</td>
+                                    <td class="text-center">{{ product.product.price * product.quantity  }} €</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot class="bold">
+                            <tr>
+                                <td class="text-center" colspan="2"> Prix total :</td>
+                                <td class="text-center">{{ total }} €</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="paiement-div row">
+
+        </div>
+    </div>
+{% endblock %}
