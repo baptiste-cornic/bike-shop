@@ -7,7 +7,7 @@
     <div class="bike-card">
         <div class="bike-main">
             <div class="bike-main-img">
-                <img src="https://fakeimg.pl/750x400/">
+                <img style="width: 600px" src="{{ asset('assets/img/'~product.picture) }}">
             </div>
             <div class="bike-main-description">
                 <p>{{ product.price|format_currency('EUR', locale='fr') }}</p>
