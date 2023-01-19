@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProductType extends AbstractType
 {
@@ -23,7 +24,8 @@ class ProductType extends AbstractType
             'Electrique' => 'Electrique',
             'Urbain' => 'Urbain',
             'Cargo' => 'Cargo',
-            'Pliant' => 'Pliant'
+            'Pliant' => 'Pliant',
+            'Gravel' => 'Gravel'
             ];
 
         $builder
@@ -38,6 +40,17 @@ class ProductType extends AbstractType
             ->add('picture', FileType::class, [
                 'label' => false,
                 'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                        ],
+                        'mimeTypesMessage' => 'Veuillez sélectionner une image valide.',
+                    ])
+                ],
+                'data_class' => null,
             ])
             ->add('productType', ChoiceType::class, [
                 'label' => false,
