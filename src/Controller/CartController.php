@@ -43,11 +43,18 @@ class CartController extends AbstractController
     }
 
     #[Route('/increase_cart/{id}', name: 'increase_cart')]
-    public function increase_cart(Request $request, $id = null): RedirectResponse {
+    public function increase_cart(Request $request,ProductRepository $productRepo, $id = null): RedirectResponse {
         if (!$id){
             $this->addFlash('error', 'Erreur' );
             return $this->redirectToRoute('product_list');
         }
+
+        $product = $productRepo->find($id);
+        if (!$product->isIsValid()){
+            $this->addFlash('error', "Ce produit n'est pas disponible pour le moment" );
+            return $this->redirectToRoute('product_list');
+        }
+
         $referer = $request->headers->get('referer');
 
         $session = $this->requestStack->getSession();
