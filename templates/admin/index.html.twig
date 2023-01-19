@@ -20,7 +20,7 @@
             <tbody>
                 {% for product in products %}
                     <tr>
-                        <td>{{ product.name }}</td>
+                        <td><a class="blue-link" href="{{ path('product', {'id' : product.id}) }}">{{ product.name }}</a></td>
                         <td class="text-center">{{ product.brand }}</td>
                         <td class="text-center">{{ product.productType }}</td>
                         <td class="text-center">{{ product.price }} €</td>
