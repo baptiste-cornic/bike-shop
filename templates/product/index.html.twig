@@ -8,10 +8,10 @@
         {% for index, product in products %}
             <div class="cart">
                 <a href="{{ path('product', {'id' : product.id}) }}">
-                    <div>
-                        <img src="https://fakeimg.pl/300/">
+                    <div class="cart-img">
+                        <img style="width: 300px" src="{{ asset('assets/img/'~product.picture) }}">
                     </div>
-                    <div>
+                    <div class="cart-info">
                         <h4>{{ product.name }}</h4>
                         <p>{{ product.brand }} / {{ product.productType }}</p>
                         <p>{{ product.price|format_currency('EUR', locale='fr') }}</p>
