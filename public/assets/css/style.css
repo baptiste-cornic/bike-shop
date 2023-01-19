@@ -37,13 +37,16 @@ button{
 }
 
 .blue-link{
-    color: blue;
+    color: #0a79c1;
 }
 
 .bold{
     font-weight: bold;
 }
 
+.hover-pointer:hover{
+    cursor: pointer;
+}
 .container{
     width: 1400px;
     margin: auto auto 30px;
@@ -87,9 +90,21 @@ button{
 
 .cart{
     width: 25%;
-    margin: auto;
+    margin: 15px auto;
     display: flex;
     flex-direction: column;
+}
+
+.cart {
+    opacity: 1;
+    transition: .3s ease-in-out;
+}
+.cart:hover {
+    opacity: .5;
+}
+
+.cart-info h4, .cart-info p{
+    margin: 0 0 0 10px;
 }
 
 .bike-main{
