@@ -291,11 +291,11 @@ button{
     margin: 5px;
 }
 
-.login-div form input{
+.login-div form input, .registration-div form input{
     padding: 10px;
 }
 
-.login-div form button{
+.login-div form button, .registration-div form button{
     width: 40%;
     margin: 10px auto;
 }
@@ -312,4 +312,19 @@ button{
 
 .to-registration-div button{
     width: 100%;
+}
+
+.registration-div{
+    width: 40%;
+    margin: auto;
+}
+
+.registration-div form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.registration-div form label{
+    margin: 5px;
 }
