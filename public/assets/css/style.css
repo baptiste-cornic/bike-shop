@@ -1,6 +1,8 @@
 body{
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
+
 h1{
     text-align: center;
 }
@@ -42,6 +44,10 @@ button{
 
 .bold{
     font-weight: bold;
+}
+
+.w-50{
+    width: 50%;
 }
 
 .hover-pointer:hover{
@@ -269,3 +275,41 @@ button{
     padding: 10px;
 }
 
+/* Login/Registration */
+
+.login-div{
+    border-right: solid 1px black;
+}
+
+.login-div form{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 45px;
+}
+
+.login-div form label{
+    margin: 5px;
+}
+
+.login-div form input{
+    padding: 10px;
+}
+
+.login-div form button{
+    width: 40%;
+    margin: 10px auto;
+}
+
+.to-registration-div{
+    display: flex;
+    flex-direction: column;
+}
+
+.to-registration-div a{
+    width: 50%;
+    margin: auto;
+}
+
+.to-registration-div button{
+    width: 100%;
+}
