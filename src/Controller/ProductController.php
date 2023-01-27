@@ -69,29 +69,28 @@ class ProductController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()){
 
                 $picture = $form->get('picture')->getData();
-                if (!$picture)
-                    throw new FileException('Merci de séléctionner une image pour votre produit.');
 
-                $safeFilename  = $slugger->slug($product->getName());
-                $newFilename = $safeFilename.'_'.uniqid().'.'.$picture->guessExtension();
+                if ($picture){
+                    $safeFilename  = $slugger->slug($product->getName());
+                    $newFilename = $safeFilename.'_'.uniqid().'.'.$picture->guessExtension();
 
-                try {
-                    $picture->move(
-                        $this->getParameter('img_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    $this->addFlash('error', 'Image invalide.');
-                    return $this->redirectToRoute('admin');
+                    try {
+                        $picture->move(
+                            $this->getParameter('img_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        $this->addFlash('error', 'Image invalide.');
+                        return $this->redirectToRoute('admin');
+                    }
+
+                    $product->setPicture($newFilename);
                 }
-
-                $product->setPicture($newFilename);
 
                 $em->persist($product);
                 $em->flush();
 
                 $this->addFlash('success', "Enregistrement réussi." );
-
                 return $this->redirectToRoute('admin');
             }
         }catch (FileNotFoundException $exception){
