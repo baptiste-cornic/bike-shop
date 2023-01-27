@@ -6,51 +6,78 @@
     <h1>{{ title }}</h1>
     <div class="add-bike">
         {{ form_start(form) }}
+        <h3 class="text-center">Informations générales</h3>
             <div class="row">
-                <div class="label-div">Nom</div>
+                <div class="label-div">
+                    <label for="product_name">Nom <span class="red">*</span></label>
+                </div>
                 <div class="input-div">{{ form_widget(form.name) }}</div>
             </div>
             <div class="row">
-                <div class="label-div">Marque</div>
+                <div class="label-div">
+                    <label for="product_brand">Marque <span class="red">*</span></label>
+                </div>
                 <div class="input-div">{{ form_widget(form.brand) }}</div>
             </div>
             <div class="row">
-                <div class="label-div">Photo</div>
+                <div class="label-div">
+                    <label for="product_picture">Photo <span class="red">*</span></label>
+                </div>
                 <div class="input-div">{{ form_widget(form.picture) }}</div>
                 {% if product.picture %}
                     <i class="fa-regular fa-file-image hover-pointer" title="{{ product.name }}"></i>
                 {% endif %}
             </div>
             <div class="row">
-                <div class="label-div">Type de produit</div>
+                <div class="label-div">
+                    <label for="product_productType">Type de produit <span class="red">*</span></label>
+                </div>
                 <div class="input-div">{{ form_widget(form.productType) }}</div>
             </div>
             <div class="row">
-                <div class="label-div">Prix</div>
+                <div class="label-div">
+                    <label for="product_price">Prix <span class="red">*</span></label>
+                </div>
                 <div class="input-div">{{ form_widget(form.price) }}</div>
             </div>
             <div class="row">
-                <div class="label-div">Description</div>
+                <div class="label-div">
+                    <label for="product_description">Description <span class="red">*</span></label>
+                </div>
                 <div class="input-div">{{ form_widget(form.description) }}</div>
             </div>
+
+
+
+            <h3 class="text-center">Informations complémentaires</h3>
             <div class="row">
-                <div class="label-div">Cadre</div>
+                <div class="label-div">
+                    <label for="product_frame">Cadre</label>
+                </div>
                 <div class="input-div">{{ form_widget(form.frame) }}</div>
             </div>
             <div class="row">
-                <div class="label-div">Fourche</div>
+                <div class="label-div">
+                    <label for="product_fork">Fourche</label>
+                </div>
                 <div class="input-div">{{ form_widget(form.fork) }}</div>
             </div>
             <div class="row">
-                <div class="label-div">Suspension</div>
+                <div class="label-div">
+                    <label for="product_suspension">Suspension</label>
+                </div>
                 <div class="input-div">{{ form_widget(form.suspension) }}</div>
             </div>
             <div class="row">
-                <div class="label-div">Type de frein</div>
+                <div class="label-div">
+                    <label for="product_brakeType">Type de frein</label>
+                </div>
                 <div class="input-div">{{ form_widget(form.brakeType) }}</div>
             </div>
             <div class="row">
-                <div class="label-div">Selle</div>
+                <div class="label-div">
+                    <label for="product_saddle">Selle</label>
+                </div>
                 <div class="input-div">{{ form_widget(form.saddle) }}</div>
             </div>
             <div class="row row-btn">
