@@ -9,6 +9,7 @@
         <table>
             <thead>
                 <tr>
+                    <th></th>
                     <th>Nom</th>
                     <th>Marque</th>
                     <th>Type</th>
@@ -20,6 +21,7 @@
             <tbody>
                 {% for product in products %}
                     <tr>
+                        <td><img style="width: 100px" src="{{ asset('assets/img/'~product.picture) }}"></td>
                         <td><a class="blue-link" href="{{ path('product', {'id' : product.id}) }}">{{ product.name }}</a></td>
                         <td class="text-center">{{ product.brand }}</td>
                         <td class="text-center">{{ product.productType }}</td>
