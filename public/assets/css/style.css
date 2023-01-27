@@ -168,7 +168,7 @@ aside{
     display: inline-block;
 }
 
-.add-bike form input, .add-bike form textarea, .add-bike form select{
+.add-bike form input, .add-bike form textarea, .add-bike form select, .order-form-div input{
     padding: 5px;
 }
 
@@ -278,21 +278,23 @@ aside{
 /* Order */
 
 .order-div {
-    width: 80%;
+    width: 90%;
     margin: auto;
 }
 
 .order-form-div{
-    width: 65%;
+    width: 50%;
     margin: auto;
+    margin-right: 15px;
+    border-right: solid 1px black;
 }
 
 .order-form-div form input{
-    width: 40%;
+    width: 80%;
 }
 
 .order-recap-div{
-    width: 35%;
+    width: 50%;
 }
 
 .order-recap-div table{
