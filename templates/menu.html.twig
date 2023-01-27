@@ -24,6 +24,14 @@
                     </span>
                 </a>
             </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <div>
+                    <a href="{{ path('admin') }}">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Admin</span>
+                    </a>
+                </div>
+            {% endif %}
             {% if app.user %}
                 <div>
                     <a href="{{ path('logout') }}">
@@ -39,15 +47,6 @@
                     </a>
                 </div>
             {% endif %}
-            {% if is_granted('ROLE_ADMIN') %}
-                <div>
-                    <a href="{{ path('admin') }}">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Admin</span>
-                    </a>
-                </div>
-            {% endif %}
-
         </div>
     </nav>
 </header>
