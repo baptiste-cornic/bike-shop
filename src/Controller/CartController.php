@@ -68,6 +68,7 @@ class CartController extends AbstractController
 
         $session->set('cart', $cart);
 
+        $this->addFlash('success', "Le produit a été ajouté à votre panier." );
         return $this->redirect($referer);
     }
 
@@ -93,6 +94,7 @@ class CartController extends AbstractController
 
         $session->set('cart', $cart);
 
+        $this->addFlash('success', "Le produit a été retiré à votre panier." );
         return $this->redirect($referer);
     }
 
@@ -113,6 +115,7 @@ class CartController extends AbstractController
         }
         $session->set('cart', $cart);
 
+        $this->addFlash('success', "Le produit a été retiré à votre panier." );
         return $this->redirect($referer);
     }
 }
