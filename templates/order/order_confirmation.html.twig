@@ -21,6 +21,7 @@
                     <table>
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>Nom</th>
                                 <th>Quantité</th>
                                 <th>Prix total</th>
@@ -31,7 +32,12 @@
                             {% for product in cart %}
                                 {% set total = total + product.product.price * product.quantity  %}
                                 <tr>
-                                    <td>{{ product.product.name }}</td>
+                                    <td><img style="width: 75px" src="{{ asset('assets/img/'~product.product.picture) }}"></td>
+                                    <td>
+                                        <a class="blue-link" target="_blank" href="{{ path('product', {'id' : product.product.id}) }}">
+                                            {{ product.product.name }}
+                                        </a>
+                                    </td>
                                     <td class="text-center">{{ product.quantity }}</td>
                                     <td class="text-center">{{ product.product.price * product.quantity  }} €</td>
                                 </tr>
@@ -40,7 +46,7 @@
                         <tfoot class="bold">
                             <tr>
                                 <td class="text-center" colspan="2"> Prix total :</td>
-                                <td class="text-center">{{ total }} €</td>
+                                <td class="text-center" colspan="2">{{ total }} €</td>
                             </tr>
                         </tfoot>
                     </table>
