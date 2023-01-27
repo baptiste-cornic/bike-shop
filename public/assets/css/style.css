@@ -112,15 +112,21 @@ button{
     border-color: #fbd1d1;
 }
 
+aside{
+    width: 20%;
+}
+
 .bike-list{
     display: flex;
     flex-wrap: wrap;
+    width: 80%;
 }
 
 .cart{
-    width: 25%;
+
     margin: 15px auto;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
 }
 
@@ -234,6 +240,12 @@ button{
     border-collapse: collapse;
     width: 80%;
     font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.cart-div button{
+    float: right;
+    margin-right: 20%;
 }
 
 .cart-div table thead th, .order-recap-div table thead th{
