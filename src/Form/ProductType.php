@@ -61,7 +61,6 @@ class ProductType extends AbstractType
             ->add('price', MoneyType::class, [
                 'label' => false,
                 'required' => true,
-                'divisor' => 100,
                 'currency' => ''
                 ])
             ->add('description', TextareaType::class, [
