@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
+#[ORM\HasLifecycleCallbacks]
 class Order
 {
     #[ORM\Id]
@@ -57,9 +58,10 @@ class Order
         return $this->creationDate;
     }
 
-    public function setCreationDate(\DateTimeInterface $creationDate): self
+    #[ORM\PrePersist]
+    public function setCreationDate(): self
     {
-        $this->creationDate = $creationDate;
+        $this->creationDate = new \DateTime();;
 
         return $this;
     }
