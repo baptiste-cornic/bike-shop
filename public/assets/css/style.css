@@ -314,6 +314,19 @@ aside{
     padding: 10px;
 }
 
+.paiement-div{
+    width: 60%;
+    margin: 50px auto auto;
+}
+
+.paiement-div-btn{
+    display: flex;
+    justify-content: center;
+    margin: 15px;
+}
+
+
+
 /* Login/Registration */
 
 .login-div{
