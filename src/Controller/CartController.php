@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ProductRepository;
+use App\Service\CartService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,25 +21,12 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart', name: 'cart')]
-    public function index(ProductRepository $productRepo): Response
+    public function index(ProductRepository $productRepo, CartService $cartService): Response
     {
-        $sessionCart = $this->requestStack->getSession()->get('cart');
-
-        $cart = [];
-        if ($sessionCart){
-            foreach ($sessionCart as $id => $quantity){
-                $product = $productRepo->find($id);
-                if($product){
-                    $cart[$id]=[
-                        'quantity' => $quantity,
-                        'product' => $product
-                    ];
-                }
-            }
-        }
+       $cart = $cartService->getCart();
 
         return $this->render('cart/index.html.twig', [
-            'cart' => $cart,
+            'cart' => $cart['cart'],
         ]);
     }
 
