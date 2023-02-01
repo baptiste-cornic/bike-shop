@@ -21,19 +21,19 @@ class CartService
         $cart = [];
         $totalPrice = 0;
 
-        foreach ($sessionCart as $id => $quantity){
-            $product = $this->productRepo->find($id);
-            if($product){
-                $totalPrice = $totalPrice + ($quantity * $product->getPrice());
-                $cart[$id]=[
-                    'quantity' => $quantity,
-                    'product' => $product
-                ];
+        if ($sessionCart){
+            foreach ($sessionCart as $id => $quantity){
+                $product = $this->productRepo->find($id);
+                if($product){
+                    $totalPrice = $totalPrice + ($quantity * $product->getPrice());
+                    $cart[$id]=[
+                        'quantity' => $quantity,
+                        'product' => $product
+                    ];
+                }
             }
         }
 
         return ['cart' => $cart, 'totalPrice' => $totalPrice];
-
     }
-
 }
