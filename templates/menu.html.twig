@@ -1,52 +1,52 @@
 <header>
-    <nav>
+    <nav class="topnav" id="myTopnav">
         <div class="left-part-header">
             <a href="{{ path('product_list') }}">
-                <h2>Bike Shop</h2>
+                <span>Bike Shop</span>
             </a>
         </div>
-        <div class="right-part-header">
+        <div>
+            <a href="{{ path('product_list') }}">
+                <i class="fa-solid fa-bicycle"></i>
+                <span>Vélos</span>
+            </a>
+        </div>
+        <div>
+            <a href="{{ path('cart') }}">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>
+                    Panier
+                    {% if app.session.get('cart') is not empty %}
+                        ({{ app.session.get('cart')|length }})
+                    {% endif %}
+                </span>
+            </a>
+        </div>
+        {% if is_granted('ROLE_ADMIN') %}
             <div>
-                <a href="{{ path('product_list') }}">
-                    <i class="fa-solid fa-bicycle"></i>
-                    <span>Vélos</span>
+                <a href="{{ path('admin') }}">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Admin</span>
                 </a>
             </div>
+        {% endif %}
+        {% if app.user %}
             <div>
-                <a href="{{ path('cart') }}">
-                    <i class="fa-solid fa-cart-shopping"></i>
-
-                    <span>
-                        Panier
-                        {% if app.session.get('cart') is not empty %}
-                            ({{ app.session.get('cart')|length }})
-                        {% endif %}
-                    </span>
+                <a href="{{ path('logout') }}">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Déconnexion</span>
                 </a>
             </div>
-            {% if is_granted('ROLE_ADMIN') %}
-                <div>
-                    <a href="{{ path('admin') }}">
-                        <i class="fa-solid fa-user"></i>
-                        <span>Admin</span>
-                    </a>
-                </div>
-            {% endif %}
-            {% if app.user %}
-                <div>
-                    <a href="{{ path('logout') }}">
-                        <i class="fa-solid fa-circle-user"></i>
-                        <span>Déconnexion</span>
-                    </a>
-                </div>
-            {% else %}
-                <div>
-                    <a href="{{ path('login') }}">
-                        <i class="fa-solid fa-circle-user"></i>
-                        <span>Mon compte</span>
-                    </a>
-                </div>
-            {% endif %}
+        {% else %}
+            <div>
+                <a href="{{ path('login') }}">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <span>Mon compte</span>
+                </a>
+            </div>
+        {% endif %}
+        <div class="icon-div" id="icon-div">
+            <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
 </header>
