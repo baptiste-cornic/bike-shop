@@ -79,7 +79,7 @@ class OrderController extends AbstractController
 
         // Create a PaymentIntent with amount and currency
         $paymentIntent = \Stripe\PaymentIntent::create([
-            'amount' => $cart['totalPrice'],
+            'amount' => $cart['totalPrice'] * 100,
             'currency' => 'eur',
             'automatic_payment_methods' => [
                 'enabled' => true,
