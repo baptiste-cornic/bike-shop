@@ -1,6 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", function (){
-    document.querySelector('.flash').addEventListener('click', removeFlash)
+    document.querySelector('.flash').addEventListener('click', removeFlash);
+    document.querySelector('.icon-div').addEventListener('click', showMenu);
 })
 
 function addFlash(type, msg){
@@ -34,6 +35,13 @@ function removeFlash(e){
         }
         parent.style.display = "none";
     }
+}
 
-
+function showMenu(){
+    let myTopnav = document.getElementById("myTopnav");
+    if (myTopnav.className === "topnav") {
+        myTopnav.className += " responsive";
+    } else {
+        myTopnav.className = "topnav";
+    }
 }
