@@ -52,7 +52,7 @@
                             <th></th>
                             <th>Nom</th>
                             <th>Quantité</th>
-                            <th>Prix total</th>
+                            <th>Prix unitaire</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,7 +67,7 @@
                                     </a>
                                 </td>
                                 <td class="text-center">{{ product.quantity }}</td>
-                                <td class="text-center">{{ product.product.price * product.quantity  }} €</td>
+                                <td class="text-center">{{ product.product.price }} €</td>
                             </tr>
                         {% endfor %}
                     </tbody>
