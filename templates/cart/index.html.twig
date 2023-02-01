@@ -6,60 +6,51 @@
     <h1>Panier</h1>
     <div class="cart-div">
         {% if cart %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Nom</th>
-                    <th>Prix unitaire</th>
-                    <th>Quantité</th>
-                    <th>Prix total</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-            {% set total = 0 %}
+            <div class="cart-header-div">
+                <div class="cart-header-div-img text-center"></div>
+                <div class="cart-header-div-name text-center">Nom</div>
+                <div class="cart-header-div-price text-center">Prix unitaire</div>
+                <div class="cart-header-div-quantity text-center">Quantité</div>
+                <div class="cart-header-div-delete"></div>
+            </div>
+            <div class="cart-body-div">
                 {% for product in cart %}
-                    {% set total = total + product.product.price * product.quantity  %}
-                    <tr>
-                        <td class="d-flex">
+                    <div class="cart-body-line text-center">
+                        <div class="cart-body-div-left">
                             <div class="cart-img-div">
-                                <img style="width: 150px" src="{{ asset('assets/img/'~product.product.picture) }}">
+                                <img src="{{ asset('assets/img/'~product.product.picture) }}">
                             </div>
-                            <div class="cart-text-div">
-                                <p>{{ product.product.name }}</p>
+                        </div>
+                        <div class="cart-body-div-right">
+                            <div class="cart-body-div-name">
+                                <div class="cart-text-div">
+                                    {{ product.product.name }}
+                                </div>
                             </div>
-
-                        </td>
-                        <td class="text-center">{{ product.product.price }} €</td>
-                        <td class="text-center">
-                            <div>
+                            <div class="cart-body-div-price text-center">{{ product.product.price }} €</div>
+                            <div class="cart-body-div-quantity text-center">
                                 <a href="{{ path('decrease_cart', {'id' : product.product.id}) }}" title="Ajouter au panier">
                                     <span class="cart-update-quantity">-</span>
                                 </a>
                                 <span class="cart-quantity">
-                                    {{ product.quantity }}
-                                </span>
-
+                                {{ product.quantity }}
+                            </span>
                                 <a href="{{ path('increase_cart', {'id' : product.product.id}) }}" title="Ajouter au panier">
                                     <span class="cart-update-quantity">+</span>
                                 </a>
                             </div>
+                            <div class="cart-body-div-delete">
+                                <a href="{{ path('remove_cart', {'id' : product.product.id}) }}"><i class="fa-solid fa-trash"></i></a>
+                            </div>
+                        </div>
 
-                        </td>
-                        <td class="text-center">{{ product.product.price * product.quantity  }} €</td>
-                        <td>
-                            <a href="{{ path('remove_cart', {'id' : product.product.id}) }}"><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
+                    </div>
                 {% endfor %}
-            </tbody>
-            <tfoot class="bold">
-                <tr>
-                    <td colspan="3" class="text-center">Total de mes articles :</td>
-                    <td colspan="2">{{ total }} €</td>
-                </tr>
-            </tfoot>
-        </table>
+                <div class="cart-footer-div bold d-flex">
+                    <div class="cart-footer-div-text">Total de mes articles :</div>
+                    <div class="cart-footer-div-total text-center">{{ totalPrice }} €</div>
+                </div>
+            </div>
             <button class="btn btn-success ">
                 <a href="{{ path('order') }}">Valider mon panier</a>
             </button>
