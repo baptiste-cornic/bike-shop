@@ -173,7 +173,7 @@ aside{
 
 /* Add_product */
 .add-bike{
-    width: 500px;
+    width: 55%;
     margin: auto;
     border-radius: 25px;
     background-color: #f9f9f9;
@@ -498,6 +498,18 @@ aside{
     .login-div form button, .registration-div form button {
         width: 60%;
     }
+
+    .add-bike{
+        width: 80%;
+    }
+
+    .bike-list-admin table th, .bike-list-admin table td{
+        padding: 0.5em;
+    }
+
+    .bike-list-admin table th:nth-child(4), .bike-list-admin table td:nth-child(4){
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 550px){
@@ -547,7 +559,7 @@ aside{
         border: none;
     }
 
-    .order-form-div .row{
+    .order-form-div .row, .add-bike .row{
         flex-direction: column;
     }
 
@@ -589,5 +601,17 @@ aside{
 
     .registration-div{
         width: 80%;
+    }
+
+    .add-bike .input-div, .add-bike .label-div {
+        width: 90%;
+    }
+
+    .bike-list-admin table th, .bike-list-admin table td{
+        padding: 0.25em;
+    }
+
+    .bike-list-admin table th:nth-child(1), .bike-list-admin table td:nth-child(1){
+        display: none;
     }
 }
