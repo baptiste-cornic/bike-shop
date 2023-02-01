@@ -26,6 +26,7 @@
 
 .topnav .icon-div {
     display: none;
+    cursor: pointer;
 }
 
 .left-part-header{
