@@ -8,8 +8,14 @@
         {{ form_start(registrationForm) }}
         <label for="registration_form_email">Email</label>
         {{ form_widget(registrationForm.email) }}
+        <div class="red">
+            {{ form_errors(registrationForm.email) }}
+        </div>
         <label for="registration_form_plainPassword">Mot de passe</label>
         {{ form_widget(registrationForm.plainPassword) }}
+        <div class="red">
+            {{ form_errors(registrationForm.plainPassword) }}
+        </div>
 
         <button class="btn btn-success" type="submit">S'inscrire</button>
         {{ form_end(registrationForm) }}
