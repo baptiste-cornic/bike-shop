@@ -24,7 +24,9 @@
                         <div class="cart-body-div-right">
                             <div class="cart-body-div-name">
                                 <div class="cart-text-div">
-                                    {{ product.product.name }}
+                                    <a class="blue-link" target="_blank" href="{{ path('product', {'id' : product.product.id}) }}">
+                                        {{ product.product.name }}
+                                    </a>
                                 </div>
                             </div>
                             <div class="cart-body-div-price text-center">{{ product.product.price }} €</div>
