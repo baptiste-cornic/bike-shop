@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\PseudoTypes\NumericString;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -16,9 +19,15 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull(
+        message: 'Merci de compléter le champ Nom.',
+    )]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotNull(
+        message: 'Merci de compléter le champ Marque.',
+    )]
     private ?string $brand = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -28,9 +37,15 @@ class Product
     private ?string $productType = null;
 
     #[ORM\Column]
+    #[Assert\NotNull(
+        message: 'Merci de compléter le champ Prix.',
+    )]
     private ?float $price = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotNull(
+        message: 'Merci de fournir une description.',
+    )]
     private ?string $description = null;
 
     #[ORM\Column(length: 255, nullable: true)]
