@@ -18,7 +18,7 @@ function addFlash(type, msg){
     }
 
     let div = `<div class="alert alert-${type}">
-                    <p><i class="fa-solid ${icon}"></i> ${msg}</p>
+                    <span><i class="fa-solid ${icon}"></i> ${msg}</span>
                     <button type="button" class="close-flash">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
