@@ -105,6 +105,52 @@ button{
     border-color: #fbd1d1;
 }
 
+/* Header */
+
+
+.topnav {
+    background-color: #0a79c1;
+    overflow: hidden;
+}
+
+.topnav a{
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.topnav div {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 17px;
+    margin: auto 50px;
+}
+
+.topnav div:not(:first-child):hover{
+    background-color: #2c8fd0;
+}
+
+.topnav .icon-div {
+    display: none;
+    cursor: pointer;
+}
+
+.left-part-header{
+    margin: auto 30px;
+}
+
+.left-part-header span{
+    font-size: 1.4em;
+}
+
+.fa-solid fa-xmark{
+    color: red;
+}
+
 aside{
     width: 20%;
 }
@@ -461,6 +507,12 @@ aside{
 
 /* Responsive */
 
+@media only screen and (max-width: 1080px){
+    .left-part-header, .topnav div{
+        margin: 0;
+    }
+}
+
 @media only screen and (max-width: 960px){
 
     .container{
@@ -512,7 +564,35 @@ aside{
     }
 }
 
-@media only screen and (max-width: 550px){
+@media only screen and (max-width: 600px){
+
+    .topnav div:not(:first-child) {
+        display: none;
+    }
+
+    #icon-div {
+        font-size: 1.6em;
+        float: right;
+        display: block;
+    }
+
+    .topnav a{
+        display: block;
+    }
+
+    .topnav.responsive {
+        position: relative;
+    }
+    .topnav.responsive div.icon-div {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    .topnav.responsive div {
+        float: none;
+        display: block;
+        text-align: left;
+    }
 
     .bike-list-img{
         width: 200px;
