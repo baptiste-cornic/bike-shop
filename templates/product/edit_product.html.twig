@@ -12,12 +12,19 @@
                     <label for="product_name">Nom <span class="red">*</span></label>
                 </div>
                 <div class="input-div">{{ form_widget(form.name) }}</div>
+
+            </div>
+            <div class="red">
+                {{ form_errors(form.name) }}
             </div>
             <div class="row">
                 <div class="label-div">
                     <label for="product_brand">Marque <span class="red">*</span></label>
                 </div>
                 <div class="input-div">{{ form_widget(form.brand) }}</div>
+            </div>
+            <div class="red">
+                {{ form_errors(form.brand) }}
             </div>
             <div class="row">
                 <div class="label-div">
@@ -27,6 +34,9 @@
                 {% if product.picture %}
                     <i class="fa-regular fa-file-image hover-pointer" title="{{ product.name }}"></i>
                 {% endif %}
+            </div>
+            <div class="red">
+                {{ form_errors(form.picture) }}
             </div>
             <div class="row">
                 <div class="label-div">
@@ -40,11 +50,17 @@
                 </div>
                 <div class="input-div">{{ form_widget(form.price) }}</div>
             </div>
+            <div class="red">
+                {{ form_errors(form.price) }}
+            </div>
             <div class="row">
                 <div class="label-div">
                     <label for="product_description">Description <span class="red">*</span></label>
                 </div>
                 <div class="input-div">{{ form_widget(form.description) }}</div>
+            </div>
+            <div class="red">
+                {{ form_errors(form.description) }}
             </div>
 
 
@@ -86,4 +102,8 @@
 
         {{ form_end(form) }}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/checkProduct.js') }}"></script>
 {% endblock %}
