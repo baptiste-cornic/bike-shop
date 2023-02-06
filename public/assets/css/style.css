@@ -32,6 +32,10 @@ button{
     text-align: center;
 }
 
+.text-left{
+    text-align: left;
+}
+
 .d-flex{
     display: flex;
 }
