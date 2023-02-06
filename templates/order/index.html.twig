@@ -60,7 +60,7 @@
                         {% for product in cart %}
                             {% set total = total + product.product.price * product.quantity  %}
                             <tr>
-                                <td><img style="width: 75px" src="{{ asset('assets/img/'~product.product.picture) }}"></td>
+                                <td><img class="picture-75" src="{{ asset('assets/img/'~product.product.picture) }}"></td>
                                 <td>
                                     <a class="blue-link" target="_blank" href="{{ path('product', {'id' : product.product.id}) }}">
                                         {{ product.product.name }}
