@@ -79,6 +79,10 @@ button{
     text-align: right;
 }
 
+.flash span{
+    margin-top:5px ;
+}
+
 .alert{
     height: 30px;
     position: relative;
@@ -200,6 +204,10 @@ aside{
 
 .bike-main-description{
     padding: 25px;
+}
+
+.description-content{
+    text-align: justify;
 }
 
 .bike-main-description a{
