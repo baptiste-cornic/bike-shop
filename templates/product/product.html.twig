@@ -12,7 +12,7 @@
             <div class="bike-main-description">
                 <p>{{ product.price|format_currency('EUR', locale='fr') }}</p>
                 <p>{{ product.brand }} / {{ product.productType }}</p>
-                <p>{{ product.description }}</p>
+                <p class="description-content">{{ product.description }}</p>
                 <div>
                     <a href="{{ path('increase_cart', {'id' : product.id}) }}" title="Ajouter au panier">
                         <button class="btn btn-success">Ajouter au panier</button>
