@@ -78,9 +78,9 @@
         window.addEventListener("DOMContentLoaded", (event) => {
 
             // pour le mode test
-            console.log('Pour tester un paiement valide, utiliser le numéro de carte suivant : 4242 4242 4242 4242')
-            console.log('Pour tester un paiement utiliser le numéro de carte suivant : 4000 0000 0000 9995')
-            console.log('Pour tester un paiement utiliser le numéro de carte suivant : 4242 4242 4242 4242')
+            console.log('Pour tester un paiement valide : utiliser le numéro de carte suivant : 4242 4242 4242 4242')
+            console.log('Pour tester un paiement refuser : utiliser le numéro de carte suivant : 4000 0000 0000 9995')
+            console.log('Pour tester un paiement avec vérification : utiliser le numéro de carte suivant : 4000 0025 0000 3155')
 
             const stripe = Stripe("pk_test_51M7bsdCZpiMH9jLx3efZpM0DSLKWsm0F05chFOhf4OXvQRFYBovfnYrfghmsJkTyhLbFxLnMrI1f54o345BN0YLK00UEyNTAQa");
             const clientSecret = '{{ clientSecret }}';
