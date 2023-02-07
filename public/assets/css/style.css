@@ -166,8 +166,43 @@ button{
     color: red;
 }
 
+#icon-sort{
+    cursor: pointer;
+    display: none;
+    width: 20px;
+}
+
 aside{
     width: 20%;
+}
+
+aside form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 15px;
+}
+
+aside form label{
+    background-color: #0a79c1;
+    border-radius: 15px;
+    color: white;
+    margin: 25px auto 10px auto;
+    width: 100%;
+}
+
+aside form input, aside form select{
+    width: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+}
+
+.price-range-div{
+    justify-content: space-around;
+}
+
+.price-range-div input{
+    width: 30%;
+
 }
 
 .bike-list{
@@ -542,8 +577,25 @@ aside{
         flex-direction: column;
     }
 
-    .bike-list, aside{
+    .bike-list {
         width: 100%;
+    }
+
+    #icon-sort{
+        display: inline-block;
+    }
+
+    aside{
+        width: 40%;
+        margin: auto;
+    }
+
+    aside form{
+        display: none;
+    }
+
+    aside .reset-btn{
+        display: none;
     }
 
     .bike-list-img{
@@ -611,6 +663,10 @@ aside{
         float: none;
         display: block;
         text-align: left;
+    }
+
+    aside{
+        width: 60%;
     }
 
     .bike-list-img{
