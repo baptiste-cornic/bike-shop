@@ -7,7 +7,7 @@
     <div class="bike-card">
         <div class="bike-main">
             <div class="bike-main-img-div" >
-                <img class="bike-main-img" src="{{ asset('assets/img/'~product.picture) }}">
+                <img class="bike-main-img" src="{{ asset('assets/img/'~product.picture) }}" alt="{{ product.name }}">
             </div>
             <div class="bike-main-description">
                 <p>{{ product.price|format_currency('EUR', locale='fr') }}</p>
