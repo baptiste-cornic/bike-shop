@@ -6,14 +6,34 @@
     <h1>Nos vélos</h1>
     <div class="content d-flex">
         <aside>
-            <h3>Affinez votre recherche </h3>
+            <h3 class="text-center">
+                Affinez votre recherche
+                <i id="icon-sort" class="fa-solid fa-sort"></i>
+            </h3>
+            {{ form_start(form) }}
+
+            <label class="text-center" for="search_search">Mot clef</label>
+            {{ form_widget(form.search) }}
+            <label class="text-center">Prix</label>
+            <div class="row price-range-div">
+                {{ form_widget(form.minPrice) }}
+                {{ form_widget(form.maxPrice) }}
+            </div>
+            <label class="text-center" for="search_brand">Marque</label>
+            {{ form_widget(form.brand) }}
+
+            {{ form_end(form) }}
+
+            <div class="row row-btn">
+                <button type="submit" class="btn btn-success reset-btn" >Réinitialiser</button>
+            </div>
         </aside>
         <div class="bike-list">
             {% for index, product in products %}
                 <div class="cart">
                     <a href="{{ path('product', {'id' : product.id}) }}">
                         <div class="cart-img">
-                            <img class="bike-list-img" src="{{ asset('assets/img/'~product.picture) }}">
+                            <img class="bike-list-img" src="{{ asset('assets/img/'~product.picture) }}" alt="{{ product.name }}">
                         </div>
                         <div class="cart-info">
                             <h4>{{ product.name }}</h4>
@@ -26,4 +46,8 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/js/searchBike.js') }}"></script>
 {% endblock %}
