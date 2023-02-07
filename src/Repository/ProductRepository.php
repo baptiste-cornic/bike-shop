@@ -39,20 +39,46 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Product[] Returns an array of Product objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Product[] Returns an array of Product objects
+     */
+    public function SearchProduct($word, $minPrice, $maxPrice, $brand): array
+    {
+        $dql = $this->createQueryBuilder('p')
+            ->andWhere('p.isValid = true')
+        ->orderBy('p.productType', 'ASC');
+
+        if ($word){
+            $dql->andWhere('p.name LIKE :word')
+                ->orWhere('p.brand LIKE :word')
+                ->setParameter('word', '%'.$word.'%');
+        }
+
+        if ($minPrice){
+            $dql->andWhere('p.price >= :minPrice')
+                ->setParameter('minPrice', $minPrice);
+        }
+
+        if ($maxPrice){
+            $dql->andWhere('p.price <= :maxPrice')
+                ->setParameter('maxPrice', $maxPrice);
+        }
+
+        if ($brand){
+            $dql->andWhere('p.brand LIKE :brand')
+                ->setParameter('brand', $brand);
+        }
+
+        return $dql->getQuery()->execute();
+    }
+
+    public function getProductBrand(){
+        return $this->createQueryBuilder('p')
+            ->select('p.brand')
+            ->groupBy("p.brand")
+            ->getQuery()
+            ->getResult();
+    }
 
 //    public function findOneBySomeField($value): ?Product
 //    {
