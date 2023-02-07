@@ -21,7 +21,7 @@
             <tbody>
                 {% for product in products %}
                     <tr>
-                        <td><img class="picture-100" src="{{ asset('assets/img/'~product.picture) }}"></td>
+                        <td><img class="picture-100" src="{{ asset('assets/img/'~product.picture) }}" alt="{{ product.name }}"></td>
                         <td><a class="blue-link" href="{{ path('product', {'id' : product.id}) }}">{{ product.name }}</a></td>
                         <td class="text-center">{{ product.brand }}</td>
                         <td class="text-center">{{ product.productType }}</td>
