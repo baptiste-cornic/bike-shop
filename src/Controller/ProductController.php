@@ -4,12 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Form\SearchType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,13 +19,37 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProductController extends AbstractController
 {
     #[Route('/', name: 'product_list')]
-    public function index(ProductRepository $productRepo): Response
+    public function index(ProductRepository $productRepo, Request $request): Response
     {
         $products = $productRepo->findBy(['isValid'=> true], ['productType' => 'ASC']);
 
+        $form = $this->createForm(SearchType::class);
+
         return $this->render('product/index.html.twig', [
             'products' => $products,
+            'form' => $form,
         ]);
+    }
+
+    #[Route('/search_bikes', name: 'search_bikes')]
+    public function searchBikes(Request $request, ProductRepository $productRepo){
+        $content = $request->getContent();
+        $content = json_decode($content, true);
+
+        $newProducts = $productRepo->SearchProduct($content['word'], $content['minPrice'], $content['maxPrice'], $content['brand']);
+        $products = [];
+        foreach ($newProducts as $newProduct){
+            $products[] = [
+                'id'=> $newProduct->getId(),
+                'name' => $newProduct->getName(),
+                'brand' => $newProduct->getBrand(),
+                'picture' => $newProduct->getPicture(),
+                'price' => $newProduct->getPrice(),
+                'productType' => $newProduct->getProductType(),
+            ];
+        }
+
+        return $this->json($products);
     }
 
     #[Route('/product/{id}', name: 'product')]
