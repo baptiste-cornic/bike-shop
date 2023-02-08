@@ -7,10 +7,6 @@
         <div class="login-div">
             <h2 class="text-center">Déjà inscrit?</h2>
             <form method="post">
-                {% if error %}
-                    <div class="alert alert-danger red">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
-
                 {% if app.user %}
                     <div class="mb-3">
                         You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('logout') }}">Logout</a>
@@ -25,6 +21,9 @@
                 <input type="hidden" name="_csrf_token"
                        value="{{ csrf_token('authenticate') }}"
                 >
+                {% if error %}
+                    <div class="red mt-5">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
                 <button class="btn btn-success" type="submit">M'identifier</button>
             </form>
