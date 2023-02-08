@@ -5,7 +5,9 @@
 {% block body %}
     <h1>Admin</h1>
     <div class="bike-list-admin">
-        <button class="add-product-btn"><a href="{{ path('add_product') }}">Ajouter un produit</a></button>
+
+            <a class="add-product-btn" href="{{ path('add_product') }}">Ajouter un produit</a>
+
         <table>
             <thead>
                 <tr>
@@ -42,7 +44,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript">
+    <script>
 
       document.addEventListener("DOMContentLoaded", (event) => {
           document.querySelector('tbody').addEventListener('click', updateValidProduct);
