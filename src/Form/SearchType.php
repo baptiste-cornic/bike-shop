@@ -23,7 +23,7 @@ class SearchType extends AbstractType
 
         $brandList = $this->productRepo->getProductBrand();
 
-        $brandChoices= ['' => ''];
+        $brandChoices= ['Choisir' => ''];
 
         foreach ($brandList as $brand){
 
@@ -42,9 +42,6 @@ class SearchType extends AbstractType
                 'choices' => $brandChoices,
                 'multiple' => false,
                 'expanded' => false,
-                'attr' => [
-                    'placeholder' => 'Choisir une marque'
-                ]
             ])
             ->add('minPrice', TextType::class, [
                 'label' => false,
