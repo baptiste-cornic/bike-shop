@@ -66,6 +66,7 @@ button{
     padding: 0.5em 1em;
     line-height: 1.4;
     border-radius: 0.3em;
+    font-size: 1em;
 }
 
 .btn-success{
@@ -336,10 +337,8 @@ aside form input, aside form select{
     font-weight: bold;
     margin-bottom: 5px;
     float: right;
-}
-
-.add-product-btn a{
     color: white;
+    font-size: 0.9em;
 }
 
 .bike-list-admin table{
@@ -423,7 +422,7 @@ aside form input, aside form select{
     width: 30%;
 }
 
-.cart-div button{
+.cart-div .btn{
     float: right;
     margin-right: 10%;
 }
