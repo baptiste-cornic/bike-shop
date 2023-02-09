@@ -76,6 +76,7 @@ class ProductRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->select('p.brand')
             ->groupBy("p.brand")
+            ->andWhere('p.isValid = true')
             ->getQuery()
             ->getResult();
     }
