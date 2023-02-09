@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,7 +33,8 @@ class ProductController extends AbstractController
     }
 
     #[Route('/search_bikes', name: 'search_bikes')]
-    public function searchBikes(Request $request, ProductRepository $productRepo){
+    public function searchBikes(Request $request, ProductRepository $productRepo): JsonResponse
+    {
         $content = $request->getContent();
         $content = json_decode($content, true);
 
@@ -151,5 +153,22 @@ class ProductController extends AbstractController
         }catch (\Exception $exception){
             return new JsonResponse(['status' => 'error', 'message' => $exception->getMessage()]);
         }
+    }
+
+    #[Route('/delete_product/{id}', name: 'delete_product')]
+    public function deleteProduct(ProductRepository $productRepo, EntityManagerInterface $em, $id = null):RedirectResponse
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
+        $product = $productRepo->find($id);
+        if (!$product){
+            $this->addFlash('error', 'Produit inexistant, veuillez relancer votre recherche.');
+        }else{
+            $em->remove($product);
+            $em->flush();
+            $this->addFlash('success', 'Suppression du produit réussi.');
+        }
+
+        return $this->redirectToRoute('admin');
     }
 }
