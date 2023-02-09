@@ -46,11 +46,10 @@ class ProductRepository extends ServiceEntityRepository
     {
         $dql = $this->createQueryBuilder('p')
             ->andWhere('p.isValid = true')
-        ->orderBy('p.productType', 'ASC');
+            ->orderBy('p.productType', 'ASC');
 
         if ($word){
-            $dql->andWhere('p.name LIKE :word')
-                ->orWhere('p.brand LIKE :word')
+            $dql->andWhere('p.name LIKE :word OR p.brand LIKE :word')
                 ->setParameter('word', '%'.$word.'%');
         }
 
