@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function (){
     document.querySelector('#search_brand').addEventListener('input', updateBikesList);
     document.querySelector('.reset-btn').addEventListener('click', resetSearch);
     document.querySelector('#icon-sort').addEventListener('click', showHideSearch)
+    window.addEventListener("resize", displaySearchResponsive);
 });
 
 
@@ -76,5 +77,15 @@ function showHideSearch(){
     } else {
         form.style.display = "none";
         btn.style.display = "none";
+    }
+}
+
+function displaySearchResponsive(){
+    if (window.innerWidth > 960){
+        document.querySelector('form').style.display = "flex";
+        document.querySelector('.reset-btn').style.display = "inline-block";
+    }else{
+        document.querySelector('form').style.display = "none";
+        document.querySelector('.reset-btn').style.display = "none";
     }
 }
