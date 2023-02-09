@@ -9,6 +9,7 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Filesystem\Exception\FileNotFoundException;
+use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -164,6 +165,9 @@ class ProductController extends AbstractController
         if (!$product){
             $this->addFlash('error', 'Produit inexistant, veuillez relancer votre recherche.');
         }else{
+            $filesystem = new Filesystem();
+            $filesystem->remove($this->getParameter('img_directory').'/'.$product->getPicture());
+
             $em->remove($product);
             $em->flush();
             $this->addFlash('success', 'Suppression du produit réussi.');
