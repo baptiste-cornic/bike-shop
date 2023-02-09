@@ -18,6 +18,7 @@
                     <th>Price</th>
                     <th>Valide</th>
                     <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,11 @@
                         <td>
                             <a href="{{ path('edit_product', {'id' : product.id}) }}" title="editer">
                                 <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('delete_product', {'id' : product.id}) }}">
+                                <i class="fa-solid fa-trash"></i>
                             </a>
                         </td>
                     </tr>
